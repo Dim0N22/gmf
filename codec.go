@@ -47,7 +47,7 @@ type Codec struct {
 }
 
 func FindDecoder(i interface{}) (*Codec, error) {
-	var avc *C.struct_AVCodec
+	var avc *C.AVCodec
 
 	switch t := i.(type) {
 	case string:

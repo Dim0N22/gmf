@@ -50,7 +50,7 @@ var handlersMap map[uintptr]*AVIOHandlers
 
 type AVIOContext struct {
 	// avAVIOContext *_Ctype_AVIOContext
-	avAVIOContext *C.struct_AVIOContext
+	avAVIOContext *C.AVIOContext
 	handlerKey    uintptr
 	CgoMemoryManage
 }
