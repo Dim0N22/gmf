@@ -98,7 +98,7 @@ type SampleFmt int
 
 type CodecCtx struct {
 	codec      *Codec
-	avCodecCtx *C.struct_AVCodecContext
+	avCodecCtx *C.AVCodecContext
 	CgoMemoryManage
 }
 
