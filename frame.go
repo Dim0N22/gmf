@@ -30,7 +30,7 @@ import (
 )
 
 type Frame struct {
-	avFrame   *C.struct_AVFrame
+	avFrame   *C.AVFrame
 	mediaType int32
 	CgoMemoryManage
 }
