@@ -19,7 +19,7 @@ type Pair struct {
 }
 
 type Dict struct {
-	avDict *C.struct_AVDictionary
+	avDict *C.AVDictionary
 }
 
 func NewDict(pairs []Pair) *Dict {

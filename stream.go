@@ -14,7 +14,7 @@ import (
 )
 
 type Stream struct {
-	avStream *C.struct_AVStream
+	avStream *C.AVStream
 	cc       *CodecCtx
 	Pts      int64
 	CgoMemoryManage

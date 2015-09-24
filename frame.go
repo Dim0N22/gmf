@@ -47,7 +47,7 @@ func (this *Frame) FlushNewPacket(cc *CodecCtx) (*Packet, bool, error) {
 	return encode(cc, nil, this.mediaType)
 }
 
-func encode(cc *CodecCtx, avFrame *C.struct_AVFrame, mediaType int32) (*Packet, bool, error) {
+func encode(cc *CodecCtx, avFrame *C.AVFrame, mediaType int32) (*Packet, bool, error) {
 	var gotOutput int
 	var ret int
 

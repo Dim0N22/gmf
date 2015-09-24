@@ -20,7 +20,7 @@ int gmf_sw_resample(SwrContext* ctx, AVFrame*dstFrame, AVFrame*srcFrame){
 import "C"
 
 type SwrCtx struct {
-	swrCtx *C.struct_SwrContext
+	swrCtx *C.SwrContext
 	cc     *CodecCtx
 	CgoMemoryManage
 }

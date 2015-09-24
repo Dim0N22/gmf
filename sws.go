@@ -28,7 +28,7 @@ var (
 )
 
 type SwsCtx struct {
-	swsCtx *C.struct_SwsContext
+	swsCtx *C.SwsContext
 	CgoMemoryManage
 }
 

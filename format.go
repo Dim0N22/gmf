@@ -71,7 +71,7 @@ const (
 )
 
 type FmtCtx struct {
-	avCtx    *C.struct_AVFormatContext
+	avCtx    *C.AVFormatContext
 	Filename string
 	ofmt     *OutputFmt
 	streams  map[int]*Stream
@@ -343,7 +343,7 @@ func (this *FmtCtx) GetNewPackets() chan *Packet {
 }
 
 func (this *FmtCtx) NewStream(c *Codec) *Stream {
-	var avCodec *C.struct_AVCodec = nil
+	var avCodec *C.AVCodec = nil
 
 	if c != nil {
 		avCodec = c.avCodec
@@ -400,7 +400,7 @@ func (this *FmtCtx) SetInputFormat(name string) error {
 	cname := C.CString(name)
 	defer C.free(unsafe.Pointer(cname))
 
-	if this.avCtx.iformat = (*C.struct_AVInputFormat)(C.av_find_input_format(cname)); this.avCtx.iformat == nil {
+	if this.avCtx.iformat = (*C.AVInputFormat)(C.av_find_input_format(cname)); this.avCtx.iformat == nil {
 		return errors.New("unable to find format for name: " + name)
 	}
 
@@ -496,7 +496,7 @@ func (this *FmtCtx) WriteSDPFile(filename string) error {
 
 type OutputFmt struct {
 	Filename    string
-	avOutputFmt *C.struct_AVOutputFormat
+	avOutputFmt *C.AVOutputFormat
 	CgoMemoryManage
 }
 
@@ -510,7 +510,7 @@ func FindOutputFmt(format string, filename string, mime string) *OutputFmt {
 	cmime := C.CString(mime)
 	defer C.free(unsafe.Pointer(cmime))
 
-	var ofmt *C.struct_AVOutputFormat
+	var ofmt *C.AVOutputFormat
 
 	if ofmt = C.av_guess_format(cformat, nil, cmime); ofmt == nil {
 		ofmt = C.av_guess_format(nil, cfilename, cmime)

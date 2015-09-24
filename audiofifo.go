@@ -46,7 +46,7 @@ int read_fifo(AVAudioFifo* fifo, AVFrame* frame, int nb_samples){
 import "C"
 
 type AVAudioFifo struct {
-	avAudioFifo  *C.struct_AVAudioFifo
+	avAudioFifo  *C.AVAudioFifo
 	sampleFormat int32
 	channels     int
 }

@@ -19,7 +19,7 @@ import (
 	"unsafe"
 )
 
-type AVRational C.struct_AVRational
+type AVRational C.AVRational
 
 type AVR struct {
 	Num int
@@ -49,15 +49,15 @@ func AvError(averr int) error {
 }
 
 func RescaleQ(a int64, encBase AVRational, stBase AVRational) int64 {
-	return int64(C.av_rescale_q(C.int64_t(a), C.struct_AVRational(encBase), C.struct_AVRational(stBase)))
+	return int64(C.av_rescale_q(C.int64_t(a), C.AVRational(encBase), C.AVRational(stBase)))
 }
 
 func CompareTimeStamp(aTimestamp int, aTimebase AVRational, bTimestamp int, bTimebase AVRational) int {
-	return int(C.av_compare_ts(C.int64_t(aTimestamp), C.struct_AVRational(aTimebase),
-		C.int64_t(bTimestamp), C.struct_AVRational(bTimebase)))
+	return int(C.av_compare_ts(C.int64_t(aTimestamp), C.AVRational(aTimebase),
+		C.int64_t(bTimestamp), C.AVRational(bTimebase)))
 }
 func RescaleDelta(inTb AVRational, inTs int64, fsTb AVRational, duration int, last *int64, outTb AVRational) int64 {
-	return int64(C.av_rescale_delta(C.struct_AVRational(inTb), C.int64_t(inTs), C.struct_AVRational(fsTb), C.int(duration), (*C.int64_t)(unsafe.Pointer(&last)), C.struct_AVRational(outTb)))
+	return int64(C.av_rescale_delta(C.AVRational(inTb), C.int64_t(inTs), C.AVRational(fsTb), C.int(duration), (*C.int64_t)(unsafe.Pointer(&last)), C.AVRational(outTb)))
 }
 
 func Rescale(a, b, c int64) int64 {
